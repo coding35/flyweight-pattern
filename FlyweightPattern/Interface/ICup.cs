@@ -2,6 +2,6 @@ namespace FlyweightPattern.Interface
 {
     public interface ICup
     {
-        void Serve();
+        void Serve(string size);
     }
 }
