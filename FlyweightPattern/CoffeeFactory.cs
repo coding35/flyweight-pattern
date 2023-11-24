@@ -36,4 +36,9 @@ public class CoffeeFactory
         }
         return cupCategory;
     }
+    
+    public ICup GetWaterFromFactory()
+    {
+        return new Water();
+    }
 }

@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Diagnostics;
+
 namespace FlyweightPattern;
 
 class Program
@@ -22,7 +24,18 @@ class Program
             cup.Serve(GetRandomSize());
         }
         
+        for (int i = 0; i < 3; i++)
+        {
+            cup = (Coffee)coffeeFactory.GetCoffeeFromFactory("Espresso");
+            cup.Serve(GetRandomSize());
+        }
+     
+        var waterCup = (Water)coffeeFactory.GetWaterFromFactory();
+        waterCup.Serve(GetRandomSize());
+        
         int coffeeCount = coffeeFactory.TotalObjectsCreated;
+        
+        Debug.Assert(coffeeCount == 3);
         Console.WriteLine($"\nTotal Coffee objects created: {coffeeCount}");
     }
 
