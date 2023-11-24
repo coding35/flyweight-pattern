@@ -12,27 +12,27 @@ public class CoffeeFactory
         ICup cupCategory;
         if (_cups.TryGetValue(coffeeType, out var cup))
         {
+            Console.WriteLine("\nUsing existing cup object");
             cupCategory = cup;
         }
         else
         {
+            Console.WriteLine("\nCreating new cup object coffee type: " + coffeeType);
             switch (coffeeType)
             {
                 case "Black":
                     cupCategory = new Coffee(coffeeType);
-                    _cups.Add("Black", cupCategory);
                     break;
                 case "Cappuccino":
                     cupCategory = new Coffee(coffeeType);
-                    _cups.Add("Cappuccino", cupCategory);
                     break;
                 case "Espresso":
                     cupCategory = new Coffee(coffeeType);
-                    _cups.Add("Espresso", cupCategory);
                     break;
                 default:
                     throw new Exception("Coffee type not recognized.");
             }
+            _cups.Add(coffeeType, cupCategory);
         }
         return cupCategory;
     }
